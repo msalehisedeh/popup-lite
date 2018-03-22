@@ -1,0 +1,36 @@
+import { ViewContainerRef, ComponentFactoryResolver, Renderer, ElementRef } from "@angular/core";
+import { DragEvent } from 'drag-enabled';
+import { WindowLiteSelection, PopupLiteOptions, WindowOptions } from '../interfaces/popup-lite.interface';
+export declare class PopupLiteComponent {
+    private componentFactoryResolver;
+    private renderer;
+    private el;
+    private extraclasses;
+    private selector;
+    content: ViewContainerRef;
+    modalWondow: ViewContainerRef;
+    resizer: ViewContainerRef;
+    dragHeader: ViewContainerRef;
+    onResize(event: any): void;
+    config: WindowOptions;
+    constructor(el: ElementRef, componentFactoryResolver: ComponentFactoryResolver, renderer: Renderer);
+    private calcMaxHeight(node, target);
+    init(component: any, data: any, config: PopupLiteOptions, selector: WindowLiteSelection): void;
+    display(props: WindowOptions): boolean;
+    private keyUp(event);
+    private closeOverlay();
+    private onClose(event);
+    private closeModal($event, result);
+    private minimizeModal($event);
+    private maximizeModal($event);
+    private selected($event);
+    private pinModal($event);
+    dragEnabled(event: DragEvent): boolean;
+    onDragStart(event: DragEvent): void;
+    onDrag(event: DragEvent): void;
+    onDragEnd(event: DragEvent): void;
+    resizeEnabled(event: DragEvent): boolean;
+    onResizeStart(event: DragEvent): void;
+    onResizeProgress(event: DragEvent): void;
+    onResizeEnd(event: DragEvent): void;
+}

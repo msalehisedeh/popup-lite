@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<button (click)="dialogBox()" class="bt bt-primary"><span class="fa fa-close"></span>pop dialog box</button>
+<button (click)="modalBox()" class="bt bt-primary">pop modal box</button>
+<button (click)="freeBox()" class="bt bt-primary">pop free box</button>
+
+<ul class="logger">
+  <li *ngFor="let x of events" [textContent]="x | json"></li>
+</ul>
