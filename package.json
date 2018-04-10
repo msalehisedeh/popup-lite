@@ -1,6 +1,6 @@
 {
   "name": "popup-lite",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,13 +10,28 @@
     "packagr": "ng-packagr -p ng-package.json"
   },
   "private": false,
+  "keywords": [
+    "angular 4",
+    "lightweight",
+    "popup",
+    "modal",
+    "window",
+    "dialog",
+    "alert",
+    "dialog box",
+    "message box",
+    "confirm box",
+    "easy",
+    "customizable",
+    "draggable"
+  ],
   "dependencies": {
     "@angular/common": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "@angular/compiler": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "@angular/core": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "@angular/http": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "core-js": "^2.4.1",
-    "drag-enabled": "^0.2.3",
+    "drag-enabled": "^0.2.4",
     "font-awesome": "^4.7.0",
     "zone.js": "^0.8.14"
   },
