@@ -137,7 +137,7 @@ export class PopupLiteComponent {
 		return false;
 	}
 
-	private keyUp(event) {
+	keyUp(event) {
 		event.preventDefault();
 		const code = event.which;
 
@@ -145,7 +145,7 @@ export class PopupLiteComponent {
 			event.target.click();
 		}		
 	}
-	private closeOverlay(){
+	closeOverlay(){
 		if (this.config.closeOnOverlay) {
 		this.closeModal(null, { id: this.config.id, confirmed: false });
 		}
@@ -186,7 +186,7 @@ export class PopupLiteComponent {
 		}
 		return false;
 	}
-	private selected($event: any){
+	selected($event: any){
 		this.selector.setSelected(this.config.id);
 		return true;
 	}

@@ -6,7 +6,10 @@ Have you ever wanted to have a lite weight modal popup, dialogue box, or free mo
 
 This library provides Angular 4 components that enables you to have such things without relying on heavy **"@angular/material"** and just by adding PopupLiteModule into your AppModule.
 
-[Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite)
+[Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite) | [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
+
+# Version 1.0.0
+Compiled with AOT option and resolved issues.
 
 # Version 0.0.1
 

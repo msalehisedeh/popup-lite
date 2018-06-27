@@ -17,13 +17,13 @@ export declare class PopupLiteComponent {
     private calcMaxHeight(node, target);
     init(component: any, data: any, config: PopupLiteOptions, selector: WindowLiteSelection): void;
     display(props: WindowOptions): boolean;
-    private keyUp(event);
-    private closeOverlay();
+    keyUp(event: any): void;
+    closeOverlay(): void;
     private onClose(event);
     private closeModal($event, result);
     private minimizeModal($event);
     private maximizeModal($event);
-    private selected($event);
+    selected($event: any): boolean;
     private pinModal($event);
     dragEnabled(event: DragEvent): boolean;
     onDragStart(event: DragEvent): void;

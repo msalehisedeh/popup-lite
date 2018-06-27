@@ -1,6 +1,6 @@
 {
   "name": "popup-lite",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -31,7 +31,7 @@
     "@angular/core": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "@angular/http": "^5.0.0 || ^4.0.0 || ^2.0.0",
     "core-js": "^2.4.1",
-    "drag-enabled": "^0.2.4",
+    "drag-enabled": "^1.0.1",
     "font-awesome": "^4.7.0",
     "zone.js": "^0.8.14"
   },
