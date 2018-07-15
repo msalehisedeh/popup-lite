@@ -69,7 +69,7 @@
 			(onDrag)="onDrag($event)"
 			(onDragEnd)="onDragEnd($event)"
 			(dblclick)="maximizeModal($event)">
-			<span *ngIf="config.idOnHeader" class="header-title" [textContent]="config.id"></span>
+			<span *ngIf="config.idOnHeader" class="header-title" [textContent]="config.popupTitle(config.id)"></span>
 		</div>
 		  <div class="modal-body"
 		     [class.minimized]="config.minimized"

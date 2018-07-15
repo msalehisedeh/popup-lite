@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 export interface PopupLiteContentComponent {
 	data: any;
 	id: string;
+	popupTitle?: any
 }
 
 export interface PopupLiteOptions {
@@ -21,6 +22,7 @@ export interface PopupLiteOptions {
 	header?: boolean,
 	footer?: boolean,
 	idOnHeader?:boolean,
+	popupTitle?: any
 
 	maxHeight?:string,
 	minWidth?:string,

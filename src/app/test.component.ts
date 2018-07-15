@@ -12,10 +12,15 @@ export class TestModalComponent implements PopupLiteContentComponent {
  
   data: any;
   id: string;
+  pageTitle = "Component";
 
   constructor(private popService: PopupLiteService) {
   }
  
+  popupTitle(id) {
+    return this.pageTitle + ' ' + id;
+  }
+
   cancel() {
     this.popService.cancel(this.id, {issue: "none"});
   }

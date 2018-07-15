@@ -86,10 +86,17 @@ class PopupLiteComponent {
      * @return {?}
      */
     init(component, data, config, selector) {
-        let /** @type {?} */ componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-        let /** @type {?} */ componentRef = this.content.createComponent(componentFactory);
-        (/** @type {?} */ (componentRef.instance)).data = data;
-        (/** @type {?} */ (componentRef.instance)).id = config.id;
+        const /** @type {?} */ componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+        const /** @type {?} */ componentRef = this.content.createComponent(componentFactory);
+        const /** @type {?} */ instance = (/** @type {?} */ (componentRef.instance));
+        instance.data = data;
+        instance.id = config.id;
+        if (instance.popupTitle) {
+            config.popupTitle = instance.popupTitle.bind(instance);
+        }
+        else {
+            config.popupTitle = (id) => id;
+        }
         if (config) {
             const /** @type {?} */ list = Object.keys(config);
             list.map((key) => {
@@ -375,7 +382,7 @@ PopupLiteComponent.decorators = [
 			(onDrag)="onDrag($event)"
 			(onDragEnd)="onDragEnd($event)"
 			(dblclick)="maximizeModal($event)">
-			<span *ngIf="config.idOnHeader" class="header-title" [textContent]="config.id"></span>
+			<span *ngIf="config.idOnHeader" class="header-title" [textContent]="config.popupTitle(config.id)"></span>
 		</div>
 		  <div class="modal-body"
 		     [class.minimized]="config.minimized"

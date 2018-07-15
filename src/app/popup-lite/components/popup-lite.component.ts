@@ -105,10 +105,17 @@ export class PopupLiteComponent {
 	}
 
 	init(component, data, config: PopupLiteOptions, selector: WindowLiteSelection) {
-		let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-		let componentRef = this.content.createComponent(componentFactory);
-		(<PopupLiteContentComponent>componentRef.instance).data = data;
-		(<PopupLiteContentComponent>componentRef.instance).id = config.id;
+		const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+		const componentRef = this.content.createComponent(componentFactory);
+		const instance = (<PopupLiteContentComponent>componentRef.instance);
+		instance.data = data;
+		instance.id = config.id;
+
+		if(instance.popupTitle) {
+			config.popupTitle = instance.popupTitle.bind(instance);
+		} else {
+			config.popupTitle = (id) => id;
+		}
 		
 		if (config) {
 			const list = Object.keys(config);

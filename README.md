@@ -8,6 +8,9 @@ This library provides Angular 4 components that enables you to have such things 
 
 [Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite) | [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
 
+# Version 1.1.1
+Added ability for the embeded component to reset the popup title.
+
 # Version 1.0.1
 removed css attribute which was adding page height to the browser view port.
 
@@ -122,10 +125,14 @@ export class TestModalComponent implements PopupLiteContentComponent {
  
   data: any;
   id: string;
+  pageTitle = "Component";
 
   constructor(private popService: PopupLiteService) {
   }
  
+  popupTitle(id) {
+    return this.pageTitle + ' ' + id;
+  }
   cancel() {
     this.popService.cancel(this.id, {action: "cancel", data: this.data});
   }
