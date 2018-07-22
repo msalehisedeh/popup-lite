@@ -19,6 +19,7 @@ export interface PopupLiteOptions {
     header?: boolean;
     footer?: boolean;
     idOnHeader?: boolean;
+    headerIcon?: string;
     popupTitle?: any;
     maxHeight?: string;
     minWidth?: string;

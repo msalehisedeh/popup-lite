@@ -18,7 +18,7 @@ export class AppComponent {
   }
  
   modalBox() {
-    this.popService.openModal(TestModalComponent, "myModal"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openModal(TestModalComponent, "myModal" + this.counter++, this.myDataSet, {idOnHeader: true, headerIcon: "fa fa-lock"}).subscribe( 
       (success)=>{
         this.events.push(success);
       },
@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   freeBox() {
-    this.popService.openWindow(TestModalComponent, "myWindow"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openWindow(TestModalComponent, "myWindow" + this.counter++, this.myDataSet).subscribe( 
       (success)=>{
         this.events.push(success);
       },
@@ -38,7 +38,7 @@ export class AppComponent {
   }
 
   dialogBox() {
-    this.popService.openDialog(TestModalComponent, "myID"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openDialog(TestModalComponent, "myID" + this.counter++, this.myDataSet).subscribe( 
         (success)=>{
           this.events.push(success);
         },

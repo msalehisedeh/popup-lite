@@ -135,6 +135,12 @@
             min-height: 24px;
             padding:5px 10px;
 
+            .icon {
+                position: absolute;
+                left: 5px;
+                top: 3px;
+            }
+
             .header-title {
                 position: absolute;
                 top: 0;
@@ -142,6 +148,10 @@
                 padding: 2px 5px;
                 box-sizing: border-box;
                 font-size: 0.9rem;
+
+                &.padded {
+                    left: 15px;
+                }
             }
         }
         .modal-body{

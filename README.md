@@ -8,8 +8,11 @@ This library provides Angular 4 components that enables you to have such things 
 
 [Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite) | [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
 
+# Version 1.1.2
+Added option to add icon on left side of title if you plan to see an icon on the pop window.
+
 # Version 1.1.1
-Added ability for the embeded component to reset the popup title.
+Added ability for the embeded component to reset the popup title. If your component implements popupTitle() method, you will have opprtunity to reset the title based on a particular state. Let's say, you have a login panel and want to flow through forgot password and registration fields. Then, it will make sense to change panel title when you are in a different flow.
 
 # Version 1.0.1
 removed css attribute which was adding page height to the browser view port.
@@ -54,7 +57,8 @@ export interface PopupLiteOptions {
 	fixed?:boolean,
 	pinable?:boolean,
 	header?: boolean,
-	footer?: boolean,
+  footer?: boolean,
+  headerIcon?: string,
 	idOnHeader?:boolean,
 
 	maxHeight?:string,
@@ -77,10 +81,8 @@ Sample code
 
 ```javascript
 
-myDataSet = {name: "masoud"};
-
 modalBox() {
-    this.popService.openModal(TestModalComponent, "myModal"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openModal(TestModalComponent, "myModal"+this.counter++, {name: "masoud", status:"login"}, {iconHeader: 'fa fa-lock', idOnHeader: true}).subscribe( 
       (success)=>{
         this.events.push(success);
       },
@@ -90,7 +92,7 @@ modalBox() {
 }
 
 freeBox() {
-    this.popService.openWindow(TestModalComponent, "myWindow"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openWindow(TestModalComponent, "myWindow"+this.counter++, {name: "masoud", status:"free"}).subscribe( 
       (success)=>{
         this.events.push(success);
       },
@@ -100,7 +102,7 @@ freeBox() {
 }
 
 dialogBox() {
-    this.popService.openDialog(TestModalComponent, "myID"+this.counter++, this.myDataSet).subscribe( 
+    this.popService.openDialog(TestModalComponent, "myID"+this.counter++, {name: "masoud", status:"dialog"}).subscribe( 
         (success)=>{
           this.events.push(success);
         },
@@ -131,7 +133,7 @@ export class TestModalComponent implements PopupLiteContentComponent {
   }
  
   popupTitle(id) {
-    return this.pageTitle + ' ' + id;
+    return this.data === 'login' ? 'Login ' : (this.data === 'free ' ? 'Free Goodies ' : 'Dialog ') + id;
   }
   cancel() {
     this.popService.cancel(this.id, {action: "cancel", data: this.data});

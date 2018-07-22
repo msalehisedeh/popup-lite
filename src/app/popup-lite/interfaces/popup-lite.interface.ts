@@ -8,41 +8,42 @@ export interface PopupLiteContentComponent {
 }
 
 export interface PopupLiteOptions {
-	id?:string,
+	id?: string,
 	overlay?: boolean,
 	close?: boolean,
-	closeOnOverlay?:boolean,
+	closeOnOverlay?: boolean,
 	minimize?: boolean,
 	maximize?: boolean,
 	resizable?: boolean,
-	dragable?:boolean,
-	centered?:boolean,
-	fixed?:boolean,
-	pinable?:boolean,
+	dragable?: boolean,
+	centered?: boolean,
+	fixed?: boolean,
+	pinable?: boolean,
 	header?: boolean,
 	footer?: boolean,
-	idOnHeader?:boolean,
+	idOnHeader?: boolean,
+	headerIcon?: string,
 	popupTitle?: any
 
-	maxHeight?:string,
-	minWidth?:string,
-	maxWidth?:string,
+	maxHeight?: string,
+	minWidth?: string,
+	maxWidth?: string,
 }
 export interface WindowOptions extends PopupLiteOptions {
-	selected?:boolean,
+	selected?: boolean,
 	isOpen?: boolean,
 	isOpening?: boolean,
-	minimized?:boolean,
-	maximized?:boolean,
-	pinned?:boolean,
+	minimized?: boolean,
+	maximized?: boolean,
+	pinned?: boolean,
 
 	top?: string,
 	height?: string,
 	width?: string,
 	maxHeight?: string,
-	maxBodyHeight?:string,
-	minBodyHeight?:string,
-	adjustHeight?:boolean,
+	maxBodyHeight?: string,
+	minBodyHeight?: string,
+	adjustHeight?: boolean,
 	zIndex?: number
 }
 
