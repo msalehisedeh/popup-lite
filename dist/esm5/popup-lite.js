@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef, ComponentFactoryResolver, Renderer, HostListener, ViewChild, ElementRef, Injectable, Injector, ApplicationRef, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from 'drag-enabled';
 

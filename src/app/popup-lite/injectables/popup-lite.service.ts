@@ -7,8 +7,7 @@ import {
     ApplicationRef
 } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject} from 'rxjs';
 
 import { PopupLiteComponent } from '../components/popup-lite.component';
 import { PopupLiteOptions, WindowOptions, WindowLiteSelection, WindowLiteService } from '../interfaces/popup-lite.interface';

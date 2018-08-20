@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs/Subject'), require('@angular/common'), require('drag-enabled')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs/Subject', '@angular/common', 'drag-enabled'], factory) :
-	(factory((global['popup-lite'] = {}),global.ng.core,global.Rx,global.ng.common,global.dragEnabled));
-}(this, (function (exports,core,Subject,common,dragEnabled) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('rxjs'), require('@angular/common'), require('drag-enabled')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', 'rxjs', '@angular/common', 'drag-enabled'], factory) :
+	(factory((global['popup-lite'] = {}),global.ng.core,global.rxjs,global.ng.common,global.dragEnabled));
+}(this, (function (exports,core,rxjs,common,dragEnabled) { 'use strict';
 
 var PopupLiteComponent = /** @class */ (function () {
     function PopupLiteComponent(el, componentFactoryResolver, renderer) {
@@ -294,7 +294,7 @@ var PopupLiteService = /** @class */ (function () {
         }
         localConfig.id = id ? id : '' + new Date().getTime();
         this.componentRef[localConfig.id] = ref;
-        this.status[localConfig.id] = new Subject.Subject();
+        this.status[localConfig.id] = new rxjs.Subject();
         instance.init(component, data, localConfig, this);
         this.setSelected(localConfig.id);
         return this.status[localConfig.id];
@@ -318,7 +318,7 @@ var PopupLiteService = /** @class */ (function () {
         }
         localConfig.id = id ? id : '' + new Date().getTime();
         this.componentRef[localConfig.id] = ref;
-        this.status[localConfig.id] = new Subject.Subject();
+        this.status[localConfig.id] = new rxjs.Subject();
         instance.init(component, data, localConfig, this);
         this.setSelected(localConfig.id);
         return this.status[localConfig.id];
@@ -342,7 +342,7 @@ var PopupLiteService = /** @class */ (function () {
         }
         localConfig.id = id ? id : '' + new Date().getTime();
         this.componentRef[localConfig.id] = ref;
-        this.status[localConfig.id] = new Subject.Subject();
+        this.status[localConfig.id] = new rxjs.Subject();
         instance.init(component, data, localConfig, this);
         this.setSelected(localConfig.id);
         return this.status[localConfig.id];
