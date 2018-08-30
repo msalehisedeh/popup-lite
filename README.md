@@ -2,13 +2,19 @@
 
 # Welcome to Popup Lite!
 
-Have you ever wanted to have a lite weight modal popup, dialogue box, or free moving window? Well... I needed one. And here it is... a lite weight popup fully configurable with modal, dialog, and free workspace like window... all in one package!
+Have you ever wanted to have a lite weight modal popup, dialogue box, or free moving window? Well... I needed one. And here it is... a lite weight pop-up fully configurable with modal, dialog, and free workspace like window... all in one package!
 
 This library provides Angular 4 components that enables you to have such things without relying on heavy **"@angular/material"** and just by adding PopupLiteModule into your AppModule.
 
-**NOTE:** Starting with version 1.2.0 this library is compatible with Angular 6+.
+**NOTE:** If your project still is angular 2, 4, or 5; please luck-down your version reference to flexible table to 1.2.1 version by removing ^ from the version dependency in your package json. Otherwise for Angular 6+, please use 1.2.2 version or higher.
 
 [Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite/tree/master/src/app) | [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
+
+# Version 1.2.2
+rolling to angular 6+ after fixing the dependency issue.
+
+# Version 1.1.1
+Temporary roll-back to angular 5. I forgot to luck-down the dependencies for angular 5 before upgrading to angular 6. this will cause problem if you are still using angular 5. 
 
 # Version 1.2.0
 Updated libraries to become compatible with Angular 6+. 
@@ -17,7 +23,7 @@ Updated libraries to become compatible with Angular 6+.
 Added option to add icon on left side of title if you plan to see an icon on the pop window.
 
 # Version 1.1.1
-Added ability for the embeded component to reset the popup title. If your component implements popupTitle() method, you will have opprtunity to reset the title based on a particular state. Let's say, you have a login panel and want to flow through forgot password and registration fields. Then, it will make sense to change panel title when you are in a different flow.
+Added ability for the embedded component to reset the pop-up title. If your component implements popupTitle() method, you will have opportunity to reset the title based on a particular state. Let's say, you have a login panel and want to flow through forgot password and registration fields. Then, it will make sense to change panel title when you are in a different flow.
 
 # Version 1.0.1
 removed css attribute which was adding page height to the browser view port.
@@ -138,7 +144,7 @@ export class TestModalComponent implements PopupLiteContentComponent {
   }
  
   popupTitle(id) {
-    return this.data === 'login' ? 'Login ' : (this.data === 'free ' ? 'Free Goodies ' : 'Dialog ') + id;
+    return this.data === 'login' ? 'Login ' : (this.data === 'free ' ? 'Free Goodies ' : 'Dialogue ') + id;
   }
   cancel() {
     this.popService.cancel(this.id, {action: "cancel", data: this.data});
@@ -154,10 +160,10 @@ export class TestModalComponent implements PopupLiteContentComponent {
   My Name:
   <span [innerHTML]="data.name"></span>
   <button (click)="cancel()">cancel it!</button>
-  <button (click)="confirm()">fonfirm it!</button>
+  <button (click)="confirm()">confirm it!</button>
 </div>
 
 ```
 
-![alt text](https://raw.githubusercontent.com/msalehisedeh/popup-lite/master/sample.png  "What you would see when a popup lite is used")
+![alt text](https://raw.githubusercontent.com/msalehisedeh/popup-lite/master/sample.png  "What you would see when a pop-up lite is used")
 
