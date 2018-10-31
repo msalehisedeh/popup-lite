@@ -19,12 +19,12 @@ export declare class PopupLiteComponent {
     display(props: WindowOptions): boolean;
     keyUp(event: any): void;
     closeOverlay(): void;
-    private onClose(event);
-    private closeModal($event, result);
-    private minimizeModal($event);
-    private maximizeModal($event);
+    onClose(event: any): void;
+    closeModal($event: any, result: any): boolean;
+    minimizeModal($event: any): boolean;
+    maximizeModal($event: any): boolean;
     selected($event: any): boolean;
-    private pinModal($event);
+    pinModal($event: any): boolean;
     dragEnabled(event: DragEvent): boolean;
     onDragStart(event: DragEvent): void;
     onDrag(event: DragEvent): void;

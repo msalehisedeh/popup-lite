@@ -157,10 +157,10 @@ export class PopupLiteComponent {
 		this.closeModal(null, { id: this.config.id, confirmed: false });
 		}
 	}
-	private onClose(event) {
+	onClose(event) {
 		this.closeModal(event, { id: this.config.id, confirmed: false });
 	}
-	private closeModal($event:any, result){
+	closeModal($event:any, result){
 		this.config.isOpening = false;
 		this.config.overlay = false;
 		this.config.isOpen = false;
@@ -168,7 +168,7 @@ export class PopupLiteComponent {
 
 		return false;
 	}
-	private minimizeModal($event:any){
+	minimizeModal($event:any){
 		this.config.minimized = !this.config.minimized;
 		if(this.config.resizable){
 		  let ne:any = this.el.querySelector('.resize-corner');
@@ -183,7 +183,7 @@ export class PopupLiteComponent {
 		}
 		return false;
 	}
-	private maximizeModal($event:any){
+	maximizeModal($event:any){
 		this.config.maximized = !this.config.maximized;
 		if(this.config.resizable){
 		  let ne:any = this.el.querySelector('.resize-corner');
@@ -197,7 +197,7 @@ export class PopupLiteComponent {
 		this.selector.setSelected(this.config.id);
 		return true;
 	}
-	private pinModal($event:any){
+	pinModal($event:any){
 		this.config.pinned = !this.config.pinned;
 		return false;
 	}
