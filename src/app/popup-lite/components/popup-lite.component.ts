@@ -14,7 +14,7 @@ import {
 	ViewChild,
 	ElementRef} from "@angular/core";
 
-import { DragEvent } from 'drag-enabled';
+import { DragEvent } from '@sedeh/drag-enabled';
 
 import { PopupLiteService } from '../injectables/popup-lite.service';
 import { PopupLiteContentComponent, WindowLiteSelection, PopupLiteOptions, WindowOptions } from '../interfaces/popup-lite.interface';

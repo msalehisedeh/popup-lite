@@ -1,29 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
+import { PopupLiteModule } from './popup-lite/popup-lite.module';
 import { AppComponent } from './app.component';
-import { FlexiblePreviewBoxModule } from './flexible-preview-box/flexible-preview-box.module';
-
-import { CustomFavoriteComponent } from './formatters/favorite-formatter';
-import { CustomCartComponent } from './formatters/cart-formatter';
-import { CustomInventoryComponent } from './formatters/inventory-formatter';
+import { TestModalComponent } from './test.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomFavoriteComponent,
-    CustomCartComponent,
-    CustomInventoryComponent
+    TestModalComponent
   ],
   imports: [
-    BrowserModule,
-    FlexiblePreviewBoxModule
+	CommonModule,
+    PopupLiteModule
   ],
   entryComponents: [
-    CustomFavoriteComponent,
-    CustomCartComponent,
-    CustomInventoryComponent
+    TestModalComponent
   ],
   providers: [
   ],

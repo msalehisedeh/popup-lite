@@ -1,198 +1,168 @@
-# Welcome to flexible preview box!
 
-Have you ever wanted a preview box that can display anything in different ways on different application flows just by toggling meta-data rules for each flow? Flexible preview box is built with Angular 4+ code and can display images or videos with relative data or action links above or below its view port. links or any content display is controlled and formatted by the meta-data rules you provide. You can write your own formatters and achieve what is needed for a specific situation or use existing formatter from into-pipes library.  Flexible preview box can display any data for any purpose. For example: product display, user info display, video teaser display, ..., possibilities are endless.
 
-**NOTE:** If your project still is angular 2, 4, or 5; please luck-down your reference to 1.1.1 version by removing ^ from the version dependency in your package JSON. Otherwise for Angular 6+, please use 1.1.2 version or higher.
+# Welcome to Popup Lite!
 
-**NOTE:** Starting with version 1.2.1 you need to import this library through @sedeh/flexible-preview-box.
+Have you ever wanted to have a lite weight modal popup, dialogue box, or free moving window? Well... I needed one. And here it is... a lite weight pop-up fully configurable with modal, dialog, and free workspace like window... all in one package!
 
-Please send your requests or comments through the link provided below:
+This library provides Angular 4 components that enables you to have such things without relying on heavy **"@angular/material"** and just by adding PopupLiteModule into your AppModule.
 
-[Live Demo](https://flexible-preview-box.stackblitz.io) | [Source code](https://github.com/msalehisedeh/flexible-preview-box/tree/master/src/app) | [Comments/Requests](https://github.com/msalehisedeh/flexible-preview-box/issues)
+**NOTE:** If your project still is angular 2, 4, or 5; please luck-down your version reference to flexible table to 1.2.1 version by removing ^ from the version dependency in your package json. Otherwise for Angular 6+, please use 1.2.2 version or higher.
 
-```
+**NOTE:** Starting with version 1.3.1 you need to import this library through @sedeh/popup-lite.
+
+[Live Demo](https://popup-lite.stackblitz.io) | [Source code](https://github.com/msalehisedeh/popup-lite/tree/master/src/app) | [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
+
+## Dependencies
+
+```javascript
+MODULE: 
+	PopupLiteModule
+
+EXPORTS:
+  PopupLiteModule,
+  PopupLiteOptions,
+  PopupLiteContentComponent,
+  WindowLiteService,
+  PopupLiteComponent,
+  PopupLiteService
+
 DEPENDENCIES: 
-	"font-awesome": "^4.7.0", 
-	"@sedeh/into-pipes": "^2.1.1"
+    "drag-enabled": "^0.2.4",
+    "font-awesome": "^4.7.0",
 ```
 
-## Formatting the preview box display content.
+## Interfaces
 
-We are using "into-pipes" library. To see available formatting options, please follow what is supported by the library.
+The following are available functionalities presented in this version:
 
-## Sample Use
-
+Interfaces to use
 ```javascript
-<flexible-preview-box
-  *ngFor="let preview of myPreviews"
-  [item]="preview"
-  [viewport]="preview.images"
-  [metadata]="presentationKeys"
-  [effects]="config"
-  (onselect)="onselect($event)"></flexible-preview-box>
+export interface PopupLiteOptions {
+	id?:string,
+	overlay?: boolean,
+	close?: boolean,
+	closeOnOverlay?:boolean,
+	minimize?: boolean,
+	maximize?: boolean,
+	resizable?: boolean,
+	dragable?:boolean,
+	centered?:boolean,
+	fixed?:boolean,
+	pinable?:boolean,
+	header?: boolean,
+  footer?: boolean,
+  headerIcon?: string,
+	idOnHeader?:boolean,
 
+	maxHeight?:string,
+	minWidth?:string,
+	maxWidth?:string,
+}
+export interface PopupLiteContentComponent {
+	data: any;
+	id: string;
+}
+
+export interface WindowLiteService {
+	openWindow(component: any, id: string, data?: any, options?: PopupLiteOptions): Observable<any>;
+	openModal(component: any, id: string, data?: any, options?: PopupLiteOptions): Observable<any>;
+	openDialog(component: any, id: string, data?: any, options?: PopupLiteOptions): Observable<any>;
+}
 ```
 
-In above example the following could be a possible way of previewing the item presented to the box:
-```javascript
-config = {
-    zoomOnHover: true,
-    hovereffect: true,
-    width: "250",
-    height: "150"
-  }
+## Sample code
 
-  presentationKeys = [
-    {
-      key: 'reviews',
-      value: 'Reviews',
-      hidelabel: true,
-      present: true,
-      position: 'above',
-      side: 'right',
-      format: 'rating'
-    },
-    {
-      key: 'favorites',
-      value: 'Favorites',
-      hidelabel: true,
-      present: true,
-      position: 'above',
-      sidebyside: true,
-      side: 'right',
-      format:'favorite'
-    },
-    {
-      key: 'cart',
-      value: 'Add to cart',
-      present: true,
-      hidelabel: true,
-      position: 'above',
-      sidebyside: true,
-      side: 'right',
-      format:'cart'
-    },
-    {
-      key: 'price',
-      value: 'Price',
-      hidelabel: true,
-      emphasize: true,
-      present: true,
-      position: 'below',
-      side: 'center',
-      format: 'currency'
-    },
-    {
-      key: 'catalog_number',
-      value: 'Item #',
-      present: true,
-      spacing: "10",
-      position: 'below',
-      side: 'center'
-    },
-    {
-      key: 'description',
-      value: 'Description',
-      hidelabel: true,
-      present: true,
-      spacing: "10",
-      position: 'below',
-      side: 'left'
-    },
-    {
-      key: 'inventory',
-      value: 'Remaining Items',
-      present: true,
-      spacing: "10",
-      position: 'below',
-      side: 'right',
-      format: 'inventory'
+```javascript
+
+modalBox() {
+    this.popService.openModal(TestModalComponent, "myModal"+this.counter++, {name: "masoud", status:"login"}, {iconHeader: 'fa fa-lock', idOnHeader: true}).subscribe( 
+      (success)=>{
+        this.events.push(success);
+      },
+      (fail) => {
+        this.events.push(fail);
+      });
+}
+
+freeBox() {
+    this.popService.openWindow(TestModalComponent, "myWindow"+this.counter++, {name: "masoud", status:"free"}).subscribe( 
+      (success)=>{
+        this.events.push(success);
+      },
+      (fail) => {
+        this.events.push(fail);
+      });
+}
+
+dialogBox() {
+    this.popService.openDialog(TestModalComponent, "myID"+this.counter++, {name: "masoud", status:"dialog"}).subscribe( 
+        (success)=>{
+          this.events.push(success);
+        },
+        (fail) => {
+          this.events.push(fail);
+        });
     }
-  ]
-```
-So we need to create three custom formatters "favourite", "cart", and "inventory".
-favourite custom pipe should display an icon if value is set and toggle it and its value on click and perform saving or removing favourite or fire an event.
-cart custom pipe should display an icon if value is set and toggle it and its value on click and insert/remove the item in/from a cart or fire an event.
-inventory custom pipe should display relative information if inventory item is greater or less than zero.
+}
+.............
 
-To see how you can create custom formatters, look at **into-pipes** library. 
+import { Component } from '@angular/core';
 
-## attributes
+import { PopupLiteService } from './popup-lite/injectables/popup-lite.service';
+import { PopupLiteContentComponent } from './popup-lite/interfaces/popup-lite.interface';
 
-| Attribute       |Details                                                                                           |
-|-----------------|--------------------------------------------------------------------------------------------------|
-|item             | JSON data to be displayed.                                                                       |
-|viewport         | Place to display image or video.                                                                 |
-|metadata         | Data that controls which item attribute has to be played and in what form.                       |
-|effects          | Configuration attributed that controls the box.                                                  |
+@Component({
+  selector: 'test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestModalComponent implements PopupLiteContentComponent {
+ 
+  data: any;
+  id: string;
+  pageTitle = "Component";
 
-### viewport
-the value passed to view port can be of the following:
-```javascript
-{
-  type: string, // video
-  src: {
-    egg: string, // URL
-    mp4: string, // URL,
-    webm: string, // URL,
+  constructor(private popService: PopupLiteService) {
+  }
+ 
+  popupTitle(id) {
+    return this.data === 'login' ? 'Login ' : (this.data === 'free ' ? 'Free Goodies ' : 'Dialogue ') + id;
+  }
+  cancel() {
+    this.popService.cancel(this.id, {action: "cancel", data: this.data});
+  }
+  confirm() {
+    this.popService.confirm(this.id, {action: "confirm", data: this.data});
   }
 }
+.............
+<div style="text-align:center">
+  <h1>Testing</h1>
 
-OR
+  My Name:
+  <span [innerHTML]="data.name"></span>
+  <button (click)="cancel()">cancel it!</button>
+  <button (click)="confirm()">confirm it!</button>
+</div>
 
-{
-  type: string, // image
-  src: {
-    small: string,
-    large: string
-  }
-}
 ```
 
-### mtadata
+## Releases
 
-| Attribute       |Details                                                                                           |
-|-----------------|--------------------------------------------------------------------------------------------------|
-|key              | JSON path to the item to be displayed.                                                           |
-|value            | Textual representation of key on the box.                                                        |
-|present          | Display the attribute if present is set or skip.                                                 |
-|position         | Display the attribute above or below the box view port.                                          |
-|side             | Display the attribute on right, left, or centre of box.                                          |
-|emphasize        | Display in a large and bold fashion.                                                             |
-|spacing          | Top margin on the displayed row.                                                                 |
-|hidelabel        | Do not show the label.                                                                           |
-|format           | Format the value using **into-pipes** library.                                                   |
-
-
-### effects
-the following are type of effects that control the box
-
-| Attribute       |Details                                                                                           |
-|-----------------|--------------------------------------------------------------------------------------------------|
-|zoomOnHover      | if view port has two small and large images, displays large image on hover if set.               |
-|hovereffect      | will give a small zoom out effect on hover if set.                                               |
-|width            | will control the view-port width.                                                                |
-|height           | will control the view-port height.                                                               |
+| Version  |Description                                                                                                                                  |
+|----------|---------------------------------------------------------------------------------------------------------------------------------------------|
+|1.3.1     |updated dependencies.                                                                                                                        |
+|1.3.0     |It was brought to my attention that some users have trouble using my components in their angular 6 environment. Since I had only updated few dependencies when moved to Angular 6, I am thinking dependencies are causing issues. So, for this release, I am updating all dependencies to what Angular 6 applications are expecting to have. Please let me know if this is fixing or not fixing any issues you are facing.  |
+|1.2.2     |rolling to angular 6+ after fixing the dependency issue.                                                                                     |
+|1.2.1     |Temporary roll-back to angular 5. I forgot to luck-down the dependencies for angular 5 before upgrading to angular 6. this will cause problem if you are still using angular 5.   |
+|1.2.0     |Updated libraries to become compatible with Angular 6+.                                                                                      |
+|1.1.2     |Added option to add icon on left side of title if you plan to see an icon on the pop window.                                                 |
+|1.1.1     |Added ability for the embedded component to reset the pop-up title. If your component implements popupTitle() method, you will have opportunity to reset the title based on a particular state. Let's say, you have a login panel and want to flow through forgot password and registration fields. Then, it will make sense to change panel title when you are in a different flow.  |
+|1.0.1     |removed css attribute which was adding page height to the browser view port.                                                                 |
+|1.0.0     |Compiled with AOT option and resolved issues.                                                                                                |
+|0.0.1     |Initial release.                                                                                                                             |
 
 
-## Events
-You can register to receive the following events:
 
-| Event       |Details                                                                                               |
-|-------------|------------------------------------------------------------------------------------------------------|
-|onselect     |`'{ "id": "<tag box ID>", "selecedIndex": "<index list of selected items>" }'`                        |
+![alt text](https://raw.githubusercontent.com/msalehisedeh/popup-lite/master/sample.png  "What you would see when a pop-up lite is used")
 
-
-## Revision History
-
-| Version | Description                                                                                              |
-|---------|----------------------------------------------------------------------------------------------------------|
-| 1.2.1   | Updated dependencies.                                                                                    |
-| 1.2.0   | It was brought to my attention that some users have trouble using my components in their angular 6 environment. Since I had only updated few dependencies when moved to Angular 6, I am thinking dependencies are causing issues. So, for this release, I am updating all dependencies to what Angular 6 applications are expecting to have. Please let me know if this is fixing or not fixing any issues you are facing. |
-| 1.1.2   | Rolling to angular 6+ after fixing the dependency issue.                                                 |
-| 1.1.1   | Temporary roll-back to angular 5. I forgot to luck-down the dependencies for angular 5 before upgrading to angular 6. this will cause problem if you are still using angular 5.  |
-| 1.1.0   | Updated libraries to become compatible with Angular 6+.                                                  |
-| 1.0.0   | Initial release.                                                                                         |
-
-
-![alt text](https://raw.githubusercontent.com/msalehisedeh/flexible-preview-box/master/sample.png  "What you would see when a flexible-preview-box is used")

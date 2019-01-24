@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PopupLiteComponent } from './components/popup-lite.component';
 import { PopupLiteService } from './injectables/popup-lite.service';
-import { DragDropModule } from 'drag-enabled';
+import { DragDropModule } from '@sedeh/drag-enabled';
 
 @NgModule({
   imports: [

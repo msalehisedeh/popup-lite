@@ -3,11 +3,11 @@
   "lib": {
     "entryFile": "public_api.ts",
 	"umdModuleIds": {
-      "@sedeh/into-pipes": "into-pipes"
+      "@sedeh/drag-enabled": "drag-enabled"
     }
   },
   "whitelistedNonPeerDependencies": [
     "font-awesome",
-    "@sedeh/into-pipes"
+	"drag-enabled"
   ]
 }
