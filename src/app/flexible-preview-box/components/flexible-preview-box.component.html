@@ -1,0 +1,70 @@
+<div class="above-viewport" [style.max-width]="effects.width ? (effects.width + 'px') : 'auto'">
+    <div *ngFor="let row of aboveData; let i = index" 
+        class="box-row"
+        [style.margin-top]="row.spacing ? (row.spacing + 'px') : '0'"
+        [class.left]="row.side === 'left'"
+        [class.right]="row.side === 'right'"
+        [class.center]="row.side === 'center'"
+        [class.emphasize]="row.emphasize"
+        [class.side-by-side]="row.sidebyside">
+        <span class="label" [class.off-screen]="row.hidelabel" [textContent]="row.value"></span>
+        <span class="value" [intoName]="row.value"
+            [intoId]="row.key + '-' + i"
+            [into]="row.format"
+            [intoData]="item"
+            [rawContent]="rowContent(row)"
+            [onComponentChange]="onComponentChange.bind(this)"></span>
+    </div>
+    <div class="clearblock"></div>
+</div>
+<div 
+    class="viewport" 
+    tabindex="0"
+    [title]="item.name"
+    [style.width]="effects.width + 'px'" 
+    [style.height]="effects.height + 'px'"
+    (keyup)="keyup($event)"
+    (click)="selectItem($event)"
+    (mouseout)="hoverOut($event)"
+    (mouseover)="hoverOver($event)"
+    (mousemove)="hoverViewPort($event)">
+    <img  class="content" 
+            [src]="viewport.src.small" 
+            *ngIf="viewport.type === 'image'" />
+    <img  class="hover" #largeImage
+            [style.width]="(effects.width*2) + 'px'"
+            [style.height]="(effects.height*2) + 'px'"
+            [src]="viewport.src.large" 
+            *ngIf="effects.zoomOnHover" />
+    <video  
+        class="content" #video
+        [style.width]="effects.width + 'px'" 
+        [style.height]="effects.height + 'px'"
+        (play)="videoPlayed(video.currentTime)"
+        (pause)="videoPaused(video.currentTime)"
+        (ended)="videoEnded(video.currentTime)"
+        *ngIf="viewport.type === 'video'" controls>
+        <source [src]="viewport.src.mp4" type="video/mp4">
+        <source [src]="viewport.src.webm" type="video/webm">
+        <source [src]="viewport.src.egg" type="video/ogg">
+    </video>
+</div>
+<div class="below-viewport" [style.max-width]="effects.width ? (effects.width + 'px') : 'auto'">
+    <div *ngFor="let row of belowData; let i = index" 
+        class="box-row"
+        [style.margin-top]="row.spacing ? (row.spacing + 'px') : '0'"
+        [class.left]="row.side === 'left'"
+        [class.right]="row.side === 'right'"
+        [class.center]="row.side === 'center'"
+        [class.emphasize]="row.emphasize"
+        [class.side-by-side]="row.sidebyside">
+        <span class="label" [class.off-screen]="row.hidelabel" [textContent]="row.value"></span>
+        <span class="value" [intoName]="row.value"
+            [intoId]="row.key + '-' + i"
+            [into]="row.format"
+            [intoData]="item"
+            [rawContent]="rowContent(row)"
+            [onComponentChange]="onComponentChange.bind(this)"></span>
+    </div>
+    <div class="clearblock"></div>
+</div>

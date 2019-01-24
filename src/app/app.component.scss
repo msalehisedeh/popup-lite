@@ -4,9 +4,22 @@
     background-color: #eee;
     border-radius: 5px;
     box-sizing: border-box;
-    display: inline-block;
+    display: block;
     max-height: 222px;
     overflow-y: auto;
-    margin-bottom: 45px;
-    width: 100%;
+    position: relative;
 }
+.items-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+::ng-deep .rating {
+    color: pink !important;
+  }
+
+
