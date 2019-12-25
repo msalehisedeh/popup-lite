@@ -9,7 +9,7 @@ export declare class PopupLiteService implements WindowLiteService, WindowLiteSe
     private domElem;
     private status;
     constructor(componentFactoryResolver: ComponentFactoryResolver, appRef: ApplicationRef, injector: Injector);
-    private createPopupLiteComponent();
+    private createPopupLiteComponent;
     popedOut(id: any, result: any): void;
     setSelected(id: any): void;
     openWindow(component: any, id: string, data?: any, config?: PopupLiteOptions): Observable<any>;

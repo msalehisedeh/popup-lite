@@ -29,16 +29,16 @@ export class PopupLiteComponent {
 	private extraclasses = "";
 	private selector: WindowLiteSelection;
 
-	@ViewChild("content", {read: ViewContainerRef}) 
+	@ViewChild("content", {static: false}) 
 	content: ViewContainerRef;
 
-	@ViewChild("modalWondow", {read: ViewContainerRef}) 
+	@ViewChild("modalWondow", {static: false}) 
 	modalWondow: ViewContainerRef;
 	
-	@ViewChild("resizer", {read: ViewContainerRef}) 
+	@ViewChild("resizer", {static: false}) 
 	resizer: ViewContainerRef;
 	
-	@ViewChild("dragHeader", {read: ViewContainerRef}) 
+	@ViewChild("dragHeader", {static: false}) 
 	dragHeader: ViewContainerRef;
 	
 	@HostListener('window:resize', ['$event'])

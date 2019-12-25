@@ -14,7 +14,7 @@ export declare class PopupLiteComponent {
     onResize(event: any): void;
     config: WindowOptions;
     constructor(el: ElementRef, componentFactoryResolver: ComponentFactoryResolver, renderer: Renderer);
-    private calcMaxHeight(node, target);
+    private calcMaxHeight;
     init(component: any, data: any, config: PopupLiteOptions, selector: WindowLiteSelection): void;
     display(props: WindowOptions): boolean;
     keyUp(event: any): void;

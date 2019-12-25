@@ -8,6 +8,6 @@
   },
   "whitelistedNonPeerDependencies": [
     "font-awesome",
-	"drag-enabled"
+    "drag-enabled"
   ]
 }
