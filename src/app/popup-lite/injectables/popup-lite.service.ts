@@ -86,7 +86,7 @@ export class PopupLiteService implements WindowLiteService, WindowLiteSelection 
 		this.componentRef[localConfig.id] = ref;
 		this.status[localConfig.id] = new Subject<any>();
 
-		instance.init(component, data, localConfig, this);
+		setTimeout(() => instance.init(component, data, localConfig, this), 111);
 		this.setSelected(localConfig.id);
 
 		return this.status[localConfig.id];
@@ -115,7 +115,7 @@ export class PopupLiteService implements WindowLiteService, WindowLiteSelection 
 		this.componentRef[localConfig.id] = ref;
 		this.status[localConfig.id] = new Subject<any>();
 
-		instance.init(component, data, localConfig, this);
+		setTimeout(() => instance.init(component, data, localConfig, this), 111);
 		this.setSelected(localConfig.id);
 
 		return this.status[localConfig.id];
@@ -143,7 +143,7 @@ export class PopupLiteService implements WindowLiteService, WindowLiteSelection 
 		this.componentRef[localConfig.id] = ref;
 		this.status[localConfig.id] = new Subject<any>();
 
-		instance.init(component, data, localConfig, this);
+		setTimeout(() => instance.init(component, data, localConfig, this), 111);
 		this.setSelected(localConfig.id);
 
 		return this.status[localConfig.id];

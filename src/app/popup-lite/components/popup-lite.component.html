@@ -18,68 +18,67 @@
 	(keyup)="keyUp($event)"
 	(focus)="selected($event)"
 	(click)="selected($event)">
-		<div class="controls">
-			<a *ngIf="config.pinable"
-				class="pin" tabindex="0" 
-				(click)="pinModal($event)">
-				<span *ngIf="!config.pinned" class="fa fw fa-unlock" aria-hidden="true"></span>
-				<span *ngIf="config.pinned" class="fa fw fa-lock" aria-hidden="true"></span>
-				<span class="off-screen">Pin</span>
-			</a><a *ngIf="config.minimize"
-				class="minify" tabindex="0" 
-				(click)="minimizeModal($event)" 
-				[class.clicked]="config.minimized">
-				<span class="fa fw fa-window-minimize" aria-hidden="true"></span>
-				<span class="off-screen">Minimize</span>
-			</a><a *ngIf="config.maximize"
-				class="maxify" tabindex="0" 
-				(click)="maximizeModal($event)" 
-				[class.clicked]="config.maximized">
-				<span class="fa fw fa-window-maximize" aria-hidden="true"></span>
-				<span class="off-screen">Maximize</span>
-			</a><a *ngIf="config.close"
-				class="close" tabindex="0" 
-				(click)="onClose($event)">
-				<span class="fa fw fa-window-close" aria-hidden="true"></span>
-				<span class="off-screen">Close</span>
-			</a>
-		</div>
-		<a *ngIf="config.resizable"
-			#resizer
-			class="resize-corner" 
-			tabindex="0" 
-			[medium]="modalWondow"
-			[dragInDocument]="resizeEnabled.bind(this)"
-			(onDragStart)="onResizeStart($event)"
-			(onDrag)="onResizeProgress($event)"
-			(onDragEnd)="onResizeEnd($event)">
-			<span class="fa fw fa-ellipsis-h" aria-hidden="true"></span>
-			<span class="off-screen">Resize</span>
+	<div class="controls">
+		<a *ngIf="config.pinable"
+			class="pin" tabindex="0" 
+			(click)="pinModal($event)">
+			<span *ngIf="!config.pinned" class="fa fw fa-unlock" aria-hidden="true"></span>
+			<span *ngIf="config.pinned" class="fa fw fa-lock" aria-hidden="true"></span>
+			<span class="off-screen">Pin</span>
+		</a><a *ngIf="config.minimize"
+			class="minify" tabindex="0" 
+			(click)="minimizeModal($event)" 
+			[class.clicked]="config.minimized">
+			<span class="fa fw fa-window-minimize" aria-hidden="true"></span>
+			<span class="off-screen">Minimize</span>
+		</a><a *ngIf="config.maximize"
+			class="maxify" tabindex="0" 
+			(click)="maximizeModal($event)" 
+			[class.clicked]="config.maximized">
+			<span class="fa fw fa-window-maximize" aria-hidden="true"></span>
+			<span class="off-screen">Maximize</span>
+		</a><a *ngIf="config.close"
+			class="close" tabindex="0" 
+			(click)="onClose($event)">
+			<span class="fa fw fa-window-close" aria-hidden="true"></span>
+			<span class="off-screen">Close</span>
 		</a>
-		<div *ngIf="config.header"
-			#dragHeader
-			class="modal-header" 
-			[id]="config.id"
-			[style.cursor]="(config.dragable && !config.pinned) ? 'all-scroll':'default'"
-			[class.pinned]="config.pinned"
-			[class.minified]="config.minimized"
-			[medium]="modalWondow"
-			[dragInDocument]="dragEnabled.bind(this)"
-			(onDragStart)="onDragStart($event)"
-			(onDrag)="onDrag($event)"
-			(onDragEnd)="onDragEnd($event)"
-			(dblclick)="maximizeModal($event)">
-			<span *ngIf="config.headerIcon" [class]="'icon ' + config.headerIcon"></span>
-			<span *ngIf="config.idOnHeader" class="header-title" [class.padded]="config.headerIcon ? true:null" [textContent]="config.popupTitle(config.id)"></span>
-		</div>
-		  <div class="modal-body"
-		     [class.minimized]="config.minimized"
-		     [style.minHeight]="config.minBodyHeight"
-			 [style.maxHeight]="config.maxBodyHeight">
-			 <ng-template  #content></ng-template>
-		  </div>
-	      <div class="modal-footer" *ngIf="config.footer"
-		  		[class.minimized]="config.minimized">
-	         <ng-content select="[modal-footer]"></ng-content>
-		  </div>
-	    </div>
+	</div>
+	<a *ngIf="config.resizable"
+		#resizer
+		class="resize-corner" 
+		tabindex="0" 
+		[medium]="modalWondow"
+		[dragInDocument]="resizeEnabled.bind(this)"
+		(onDragStart)="onResizeStart($event)"
+		(onDrag)="onResizeProgress($event)"
+		(onDragEnd)="onResizeEnd($event)">
+		<span class="fa fw fa-ellipsis-h" aria-hidden="true"></span>
+		<span class="off-screen">Resize</span>
+	</a>
+	<div *ngIf="config.header"
+		#dragHeader
+		class="modal-header" 
+		[id]="config.id"
+		[style.cursor]="(config.dragable && !config.pinned) ? 'all-scroll':'default'"
+		[class.pinned]="config.pinned"
+		[class.minified]="config.minimized"
+		[medium]="modalWondow"
+		[dragInDocument]="dragEnabled.bind(this)"
+		(onDragStart)="onDragStart($event)"
+		(onDrag)="onDrag($event)"
+		(onDragEnd)="onDragEnd($event)"
+		(dblclick)="maximizeModal($event)">
+		<span *ngIf="config.headerIcon" [class]="'icon ' + config.headerIcon"></span>
+		<span *ngIf="config.idOnHeader" class="header-title" [class.padded]="config.headerIcon ? true:null" [textContent]="config.popupTitle(config.id)"></span>
+	</div>
+	<div class="modal-body" #content
+		[class.minimized]="config.minimized"
+		[style.minHeight]="config.minBodyHeight"
+		[style.maxHeight]="config.maxBodyHeight">
+	</div>
+	<div class="modal-footer" *ngIf="config.footer"
+		[class.minimized]="config.minimized">
+		<ng-content select="[modal-footer]"></ng-content>
+	</div>
+</div>

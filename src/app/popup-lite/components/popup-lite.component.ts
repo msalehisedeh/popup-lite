@@ -1,22 +1,17 @@
 
 import {
 	Component,
-	ComponentFactory, 
-	ReflectiveInjector,
 	ViewContainerRef,
 	ComponentFactoryResolver,
-	Input,
-	Output,
 	Renderer,
 	HostListener,
-	EventEmitter,
-	Injectable,
 	ViewChild,
+	Injector,
+	ApplicationRef,
+	EmbeddedViewRef,
 	ElementRef} from "@angular/core";
 
 import { DragEvent } from '@sedeh/drag-enabled';
-
-import { PopupLiteService } from '../injectables/popup-lite.service';
 import { PopupLiteContentComponent, WindowLiteSelection, PopupLiteOptions, WindowOptions } from '../interfaces/popup-lite.interface';
 
 @Component({
@@ -29,17 +24,10 @@ export class PopupLiteComponent {
 	private extraclasses = "";
 	private selector: WindowLiteSelection;
 
-	@ViewChild("content", {static: false}) 
-	content: ViewContainerRef;
-
-	@ViewChild("modalWondow", {static: false}) 
-	modalWondow: ViewContainerRef;
-	
-	@ViewChild("resizer", {static: false}) 
-	resizer: ViewContainerRef;
-	
-	@ViewChild("dragHeader", {static: false}) 
-	dragHeader: ViewContainerRef;
+	@ViewChild("content", {static: false}) content: ElementRef;
+	@ViewChild("modalWondow", {static: false}) modalWondow: ElementRef;
+	@ViewChild("resizer", {static: false}) resizer: ElementRef;
+	@ViewChild("dragHeader", {static: false}) dragHeader: ElementRef;
 	
 	@HostListener('window:resize', ['$event'])
 	onResize(event:any) {
@@ -82,6 +70,8 @@ export class PopupLiteComponent {
 	constructor(
 		el: ElementRef, 
 		private componentFactoryResolver: ComponentFactoryResolver,
+		private appRef: ApplicationRef,
+		private injector: Injector,
 		private renderer:Renderer) {
 		this.el = el.nativeElement;
     }
@@ -106,8 +96,11 @@ export class PopupLiteComponent {
 
 	init(component, data, config: PopupLiteOptions, selector: WindowLiteSelection) {
 		const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-		const componentRef = this.content.createComponent(componentFactory);
+		const componentRef = componentFactory.create(this.injector);
 		const instance = (<PopupLiteContentComponent>componentRef.instance);
+
+		this.appRef.attachView(componentRef.hostView);
+		this.content.nativeElement.appendChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement);
 		instance.data = data;
 		instance.id = config.id;
 
@@ -208,13 +201,13 @@ export class PopupLiteComponent {
 	onDragStart(event: DragEvent){
 	}
 	onDrag(event: DragEvent){
-		if(event.node === this.dragHeader.element.nativeElement) {
+		if(event.node === this.dragHeader.nativeElement) {
 			this.renderer.setElementStyle(event.medium, 'left', (event.clientX-event.offset.x)+"px");
 			this.renderer.setElementStyle(event.medium, 'top', (event.clientY-event.offset.y)+"px");
 		}
 	}
 	onDragEnd(event: DragEvent){
-		if(event.node === this.dragHeader.element.nativeElement) {
+		if(event.node === this.dragHeader.nativeElement) {
 			this.renderer.setElementStyle(event.medium, 'left', (event.clientX-event.offset.x)+"px");
 			this.renderer.setElementStyle(event.medium, 'top', (event.clientY-event.offset.y)+"px");
 		}
@@ -226,7 +219,7 @@ export class PopupLiteComponent {
 	onResizeStart(event: DragEvent){
 	}
 	onResizeProgress(event: DragEvent){
-		if(event.node === this.resizer.element.nativeElement) {
+		if(event.node === this.resizer.nativeElement) {
 			const wr = event.medium.getBoundingClientRect();
 			const width =  (event.clientX-event.offset.x) - wr.left;
 			const height = (event.clientY-event.offset.y) - wr.top;
@@ -245,7 +238,7 @@ export class PopupLiteComponent {
 		}
 	}
 	onResizeEnd(event: DragEvent){
-		if(event.node === this.resizer.element.nativeElement) {
+		if(event.node === this.resizer.nativeElement) {
 			const wr = event.medium.getBoundingClientRect();
 			const width =  (event.clientX-event.offset.x) - wr.left;
 			const height = (event.clientY-event.offset.y) - wr.top;

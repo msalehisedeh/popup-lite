@@ -1,19 +1,21 @@
-import { ViewContainerRef, ComponentFactoryResolver, Renderer, ElementRef } from "@angular/core";
+import { ComponentFactoryResolver, Renderer, Injector, ApplicationRef, ElementRef } from "@angular/core";
 import { DragEvent } from '@sedeh/drag-enabled';
 import { WindowLiteSelection, PopupLiteOptions, WindowOptions } from '../interfaces/popup-lite.interface';
 export declare class PopupLiteComponent {
     private componentFactoryResolver;
+    private appRef;
+    private injector;
     private renderer;
     private el;
     private extraclasses;
     private selector;
-    content: ViewContainerRef;
-    modalWondow: ViewContainerRef;
-    resizer: ViewContainerRef;
-    dragHeader: ViewContainerRef;
+    content: ElementRef;
+    modalWondow: ElementRef;
+    resizer: ElementRef;
+    dragHeader: ElementRef;
     onResize(event: any): void;
     config: WindowOptions;
-    constructor(el: ElementRef, componentFactoryResolver: ComponentFactoryResolver, renderer: Renderer);
+    constructor(el: ElementRef, componentFactoryResolver: ComponentFactoryResolver, appRef: ApplicationRef, injector: Injector, renderer: Renderer);
     private calcMaxHeight;
     init(component: any, data: any, config: PopupLiteOptions, selector: WindowLiteSelection): void;
     display(props: WindowOptions): boolean;
