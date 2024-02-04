@@ -1,0 +1,14 @@
+{
+  "name": "@sedeh/popup-lite",
+  "version": "3.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0"
+  },
+  "dependencies": {
+    "@sedeh/drag-enabled": "^4.3.1",
+    "font-awesome": "^4.7.0",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
