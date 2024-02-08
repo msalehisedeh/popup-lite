@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PopupLiteService } from './popup-lite/injectables/popup-lite.service';
+import { PopupLiteService } from '@sedeh/popup-lite';
 import { TestModalComponent } from './test.component';
 
 @Component({
