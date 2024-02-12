@@ -10,7 +10,7 @@ This library provides Angular 4 components that enables you to have such things 
 
 **NOTE:** Starting with version 1.3.1 you need to import this library through @sedeh/popup-lite.
 
-[Live Demo](https://popup-lite.stackblitz.io) | 
+[Live Demo](https://stackblitz.com/edit/popup-lite?file=package.json) | 
 [NPM](https://www.npmjs.com/package/@sedeh/popup-lite) | 
 [Comments/Requests](https://github.com/msalehisedeh/popup-lite/issues)
 

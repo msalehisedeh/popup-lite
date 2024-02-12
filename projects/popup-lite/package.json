@@ -1,14 +1,29 @@
 {
   "name": "@sedeh/popup-lite",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
+    "@sedeh/drag-enabled": "^4.3.3",
+    "font-awesome": "^4.7.0",
     "@angular/core": "^15.2.0"
   },
   "dependencies": {
-    "@sedeh/drag-enabled": "^4.3.1",
-    "font-awesome": "^4.7.0",
     "tslib": "^2.3.0"
   },
+  "keywords": [
+    "Angular 6+",
+    "lightweight",
+    "popup",
+    "modal",
+    "window",
+    "dialog",
+    "alert",
+    "dialog box",
+    "message box",
+    "confirm box",
+    "easy",
+    "customizable",
+    "draggable"
+  ],
   "sideEffects": false
 }

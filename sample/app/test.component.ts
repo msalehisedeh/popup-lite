@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PopupLiteService } from './popup-lite/injectables/popup-lite.service';
-import { PopupLiteContentComponent } from './popup-lite/interfaces/popup-lite.interface';
+import { PopupLiteService, PopupLiteContentComponent } from '@sedeh/popup-lite';
 
 @Component({
   selector: 'test',

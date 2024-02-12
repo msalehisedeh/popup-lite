@@ -9,6 +9,21 @@
     "test": "ng test"
   },
   "private": true,
+  "keywords": [
+    "Angular 6+",
+    "lightweight",
+    "popup",
+    "modal",
+    "window",
+    "dialog",
+    "alert",
+    "dialog box",
+    "message box",
+    "confirm box",
+    "easy",
+    "customizable",
+    "draggable"
+  ],
   "dependencies": {
     "@angular/animations": "^15.2.0",
     "@angular/common": "^15.2.0",
